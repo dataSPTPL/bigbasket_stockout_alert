@@ -62,7 +62,7 @@ def save_to_google_sheets(all_data, spreadsheet_name="POLKA"):
     # Load credentials from environment variable
     creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
     creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
-    
+    client = gspread.authorize(creds)
     df = pd.DataFrame(all_data)
     
     try:
